@@ -6,7 +6,6 @@ import (
 	"os"
 	"net/http"
 	//"io/ioutil"
-	"github.com/jackdanger/collectlinks"
 )
 
 func main() {
@@ -25,15 +24,15 @@ func retireve(uri string){
 	resp, err := http.Get(uri)
 
 	if err != nil {
-		fmt.Println(err)K
+		fmt.Println(err)
 		return
 	}
 	defer resp.Body.Close()
 
-	links := collectlinks.All(resp.Body)
+	links := All(resp.Body)
 
 	for _, link := range(links) {
-		fmt.Println(link)
+		fmt.Print(link)
 	}
 
 	//body, _ := ioutil.ReadAll(resp.Body)
